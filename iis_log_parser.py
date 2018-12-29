@@ -72,18 +72,18 @@ def insertMongoDB():
     ## creating a collection in the db
     mylogs = mydb["collection_name"]
     
-    ## Fetching the list of all log files from the specified directory
-    log_dir = "filePath" 
+    ## dir with all the log files
+    log_dir = "/Data/"
 
-    ## reading all the log files in the dir, which have to be parsed and inserted into the DB
-    allFiles = os.listdir(log_dir)
-    for file_name in allFiles:
-        l = read_log(file_name,log_dir)
-        mylogs.insert_many(l)
+    # ## reading all the log files in the dir, which have to be parsed and inserted into the DB
+    # allFiles = os.listdir(log_dir)
+    # for file_name in allFiles:
+    #     l = read_log(file_name,log_dir)
+    #     mylogs.insert_many(l)
     
-    # ## only for one log file
-    # l = read_log('fileName',log_dir)
-    # mylogs.insert_many(l)
+    ## only for one log file
+    l = read_log('iislog_sample.log',log_dir)
+    mylogs.insert_many(l)
           
     print(myclient.list_database_names())
     print(mydb.list_collection_names())
