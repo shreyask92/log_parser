@@ -44,9 +44,9 @@ def read_log(fileName,fileDir):
             date_idx = -1
             time_idx = -1
             for idx,val in enumerate(fields):
-                if re.search('20[0-9][0-9]-[0-1][0-9]-[0-3][0-9]', val):
+                if re.match('20[0-9][0-9]-[0-1][0-9]-[0-3][0-9]', val):
                     date_idx = idx
-                elif re.search('[0-2][0-9]:[0-5][0-9]:[0-5][0-9]', val):
+                elif re.match('[0-2][0-9]:[0-5][0-9]:[0-5][0-9]', val):
                     time_idx = idx
                 elif is_number(val):
                     fields[idx] = is_number(val)
